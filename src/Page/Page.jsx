@@ -1,12 +1,24 @@
+import Date from "./Date";
+
 function Page({ locationInfo,
                 dayWithTimeStamps,
                 weatherApiError,
                 longLatError
             }) {
-
   return (
-    <div>Page</div>
+    <>
+    <div className="border-2 text-center">
+          <p>Location: {locationInfo.name}</p>
+          <p>Latitude: {locationInfo.coord.lat}</p>
+          <p>Longitude: {locationInfo.coord.lon}</p>
+    </div>
+    <div className="border-2">
+        <Date
+            date = {dayWithTimeStamps[1]}
+        />
+    </div>
+    </>
   )
 }
 
-export default Page
+export default Page;

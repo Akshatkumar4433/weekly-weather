@@ -16,8 +16,17 @@ const   sortTimeByDate = (list) => {
             
         }
    }
-    return dayWithTimes;       
+    return objectToArray(dayWithTimes);       
 }
+
+const objectToArray = (object)=> {
+    let array = []
+    for(let i of Object.keys(object)) {
+        array.push(object[i]);
+    }
+    return array
+}
+
 
 
 const getLocationInfo = (data) => { 
