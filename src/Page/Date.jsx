@@ -1,9 +1,11 @@
 import React from 'react'
+import Time from './Time'
 
 function Date({date}) {
- console.log(date)
   return (
-    <div>Date</div>
+    <div>
+        <Time item = {date[0]}/>
+    </div>
   )
 }
 

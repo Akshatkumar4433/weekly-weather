@@ -11,10 +11,11 @@ function Page({ locationInfo,
           <p>Location: {locationInfo.name}</p>
           <p>Latitude: {locationInfo.coord.lat}</p>
           <p>Longitude: {locationInfo.coord.lon}</p>
-    </div>
+    </div> 
+
     <div className="border-2">
         <Date
-            date = {dayWithTimeStamps[1]}
+            date = {dayWithTimeStamps['2023-06-12']}
         />
     </div>
     </>

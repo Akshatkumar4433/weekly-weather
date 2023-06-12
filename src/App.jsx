@@ -40,7 +40,7 @@ function App() {
     catch (error) {
        console.log(error);
        setWeatherApiError(error);
-       setLoading(false);
+       //setLoading(false);
     }
   }
 
@@ -66,15 +66,16 @@ function App() {
     }
   return (
     <>
-    <button onClick={getDateTimeStamps}>Press</button>
+     {(!loading)?
      <Page
         locationInfo = {locationInfo}
         dayWithTimeStamps = {dayWithTimeStamps}
         weatherApiError = {weatherApiError}
         longLatError = {longLatError}
         loading = {loading}
-     />
-    </>
+     />:false}
+     <button onClick={getDateTimeStamps}>Press</button>
+     </>
   )
 }
 

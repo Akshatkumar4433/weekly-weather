@@ -16,7 +16,7 @@ const   sortTimeByDate = (list) => {
             
         }
    }
-    return objectToArray(dayWithTimes);       
+    return dayWithTimes;       
 }
 
 const objectToArray = (object)=> {
