@@ -11,12 +11,7 @@ function Page({ locationInfo,
             }) {
   
   const [selectedDateIndex, setSelectedDateIndex] = useState(0)
-  /*
-  <Date
-            date = {dayWithTimeStamps['2023-06-12']}
-            key = '2023-06-12'
-        />
-*/
+ 
   const handleForwardIcon = () => {
     if (selectedDateIndex < days.length - 1) {
         setSelectedDateIndex(selectedDateIndex + 1);
@@ -36,7 +31,13 @@ function Page({ locationInfo,
     }
   }
 
-  console.log(selectedDateIndex)
+  const date = (
+    <Date
+      date = {days[selectedDateIndex]}
+      dateData = {dayWithTimeStamps[days[selectedDateIndex]]}
+      key = {days[selectedDateIndex]}
+    />
+  )
   return (
     <>
     <div className="border-2 w-1/2 mx-auto p-10 text-center">
@@ -48,7 +49,7 @@ function Page({ locationInfo,
    
     <div className="border-2">
      <ArrowBackIcon onClick = {handleBackIcon}/>
-        
+        {date}
         <ArrowForwardIcon onClick = {handleForwardIcon}/>
     </div>
     </div>
