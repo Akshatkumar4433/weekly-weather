@@ -1,6 +1,7 @@
 import Date from "./Date";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useState } from "react";
 
 function Page({ locationInfo,
                 dayWithTimeStamps,
@@ -8,7 +9,34 @@ function Page({ locationInfo,
                 longLatError,
                 days
             }) {
-  console.log(days);
+  
+  const [selectedDateIndex, setSelectedDateIndex] = useState(0)
+  /*
+  <Date
+            date = {dayWithTimeStamps['2023-06-12']}
+            key = '2023-06-12'
+        />
+*/
+  const handleForwardIcon = () => {
+    if (selectedDateIndex < days.length - 1) {
+        setSelectedDateIndex(selectedDateIndex + 1);
+    }
+    else {
+      setSelectedDateIndex(0);
+    }
+
+  }
+
+  const handleBackIcon = () => {
+    if (selectedDateIndex > 0) {
+        setSelectedDateIndex(selectedDateIndex - 1);
+    }
+    else {
+      setSelectedDateIndex(days.length - 1);
+    }
+  }
+
+  console.log(selectedDateIndex)
   return (
     <>
     <div className="border-2 w-1/2 mx-auto p-10 text-center">
@@ -19,12 +47,9 @@ function Page({ locationInfo,
     </div> 
    
     <div className="border-2">
-     <ArrowBackIcon/>
-        <Date
-            date = {dayWithTimeStamps['2023-06-12']}
-            key = '2023-06-12'
-        />
-        <ArrowForwardIcon/>
+     <ArrowBackIcon onClick = {handleBackIcon}/>
+        
+        <ArrowForwardIcon onClick = {handleForwardIcon}/>
     </div>
     </div>
     </>
