@@ -19,6 +19,22 @@ const   sortTimeByDate = (list) => {
     return dayWithTimes;       
 }
 
+
+const getDays = (list) => {
+    let preventDuplicates = {}
+    let regexDate = /^(\d{4}-\d{2}-\d{2})/;
+    let dates = [];
+    for(let i = 0; i<list.length; i++) {
+        
+        let date = list[i].dt_txt.match(regexDate)[1];
+        if (preventDuplicates[date] === undefined) {
+            dates.push(date);
+            preventDuplicates[date] = true;
+        }
+    }
+    return dates
+}
+
 const objectToArray = (object)=> {
     let array = []
     for(let i of Object.keys(object)) {
@@ -34,7 +50,7 @@ const getLocationInfo = (data) => {
         
 }
 
-const serviceWorker = {sortTimeByDate, getLocationInfo}
+const serviceWorker = {sortTimeByDate, getLocationInfo, objectToArray, getDays}
 
 export default serviceWorker;
 

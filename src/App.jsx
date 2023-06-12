@@ -8,6 +8,7 @@ function App() {
   const [longitude, setLongitude] = useState(null);
   const [longLatError, setlongLatError] = useState(null);
   
+  const [days, setDays] = useState(null);
   const [dayWithTimeStamps, setDayWithTimeStamps] = useState([]);
   const [locationInfo, setLocationInfo] = useState({})
   const [weatherApiError, setWeatherApiError] = useState(null);
@@ -34,6 +35,7 @@ function App() {
       const response = await axios.request(options);
      setLocationInfo( serviceWorker.getLocationInfo(response.data));
       setDayWithTimeStamps(serviceWorker.sortTimeByDate(response.data.list));
+      setDays(serviceWorker.getDays(response.data.list));
       setLoading(false);
       }
     
@@ -68,6 +70,7 @@ function App() {
     <>
      {(!loading)?
      <Page
+        days = {days}
         locationInfo = {locationInfo}
         dayWithTimeStamps = {dayWithTimeStamps}
         weatherApiError = {weatherApiError}
