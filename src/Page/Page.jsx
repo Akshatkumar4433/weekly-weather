@@ -48,9 +48,14 @@ function Page({ locationInfo,
     </div> 
    
     <div className="border-2">
-     <ArrowBackIcon onClick = {handleBackIcon}/>
+      <button onClick = {handleBackIcon}>
+      <ArrowBackIcon />
+      </button>
         {date}
-        <ArrowForwardIcon onClick = {handleForwardIcon}/>
+        <button onClick = {handleForwardIcon}>
+        <ArrowForwardIcon />
+        </button>
+        
     </div>
     </div>
     </>
