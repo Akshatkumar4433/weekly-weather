@@ -50,7 +50,16 @@ const getLocationInfo = (data) => {
         
 }
 
-const serviceWorker = {sortTimeByDate, getLocationInfo, objectToArray, getDays}
+const convertKelvinToCelsius = (temp) => {
+    if (typeof temp === 'string') {
+        temp = Number(temp);
+    }
+    return (temp - 273.15).toFixed(2);
+
+}
+
+
+const serviceWorker = {sortTimeByDate, getLocationInfo, objectToArray, getDays, convertKelvinToCelsius}
 
 export default serviceWorker;
 

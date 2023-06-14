@@ -89,7 +89,9 @@ function App() {
         longLatError = {longLatError}
         loading = {loading}
      />:false}
-     <button onClick={getDateTimeStamps}>Press</button>
+     <div className='text-center'>
+        <button onClick={getDateTimeStamps} className='border mt-2 p-1 rounded hover:bg-blue-200'>Press</button>
+     </div>
      </ThemeProvider>
      </>
   )

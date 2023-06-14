@@ -1,6 +1,8 @@
 import React from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import serviceWorker from '../services/service';
+
 import { useState } from 'react';
 
 function Time({item}) {
@@ -27,7 +29,7 @@ function Time({item}) {
   }
   
   return (
-    <div className='border-2 w-fit p-5 mx-auto'>
+    <div className='border-2 w-fit p-5 mx-auto flex flex-col gap-2'>
       <button onClick={handleArrowUpIcon}>
         <KeyboardArrowUpIcon/>
       </button>
@@ -47,9 +49,9 @@ const TimeStamp = ({stamp, weatherData}) => {
  
   return (
     <>
-        <h1>{stamp}</h1>
-      <p>Temperature : {weatherData.temp}</p>
-      <p>Feels Like : {weatherData.feels_like}</p>
+        <h1 className='text-2xl'>{stamp}</h1>
+      <p>Temperature : {serviceWorker.convertKelvinToCelsius(weatherData.temp)}</p>
+      <p>Feels Like : {serviceWorker.convertKelvinToCelsius(weatherData.feels_like)}</p>
       <p>Humidity : {weatherData.humidity}</p>
     </>
   )
