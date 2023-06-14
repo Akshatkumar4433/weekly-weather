@@ -7,13 +7,16 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 function Date({date, dateData, handleBackIcon,handleForwardIcon}) {
   return (
     <div className='p-2'>
-      <button onClick = {handleBackIcon} className="h-fit p-2 rounded-full ">
+      <div className='flex justify-center'>
+      <button onClick = {handleBackIcon} className="h-fit p-2  ">
       <ArrowBackIcon />
       </button>
-        <button onClick = {handleForwardIcon} className="border-2 h-fit p-2 rounded-full ">
+      <p className='text-xl p-1'> {date} </p>
+        <button onClick = {handleForwardIcon} className=" h-fit p-2 ">
         <ArrowForwardIcon />
         </button>
-       <p className='text-xl p-1'> {date} </p>
+      </div>
+       
         <Time item = {dateData}/>
     </div>
   )

@@ -41,15 +41,13 @@ function Page({ locationInfo,
   )
   return (
     <>
-    <div className="border-2 w-1/2 mx-auto p-10 text-center">
-    <div className="p-4 text-center border-2">
+    <div className="border-2 w-fit mx-auto p-10 text-center">
+    <div className="p-10 text-center border-2 rounded-full w-fit">
           <p className="text-2xl">{locationInfo.name}</p>
           <p>Lat: {locationInfo.coord.lat}</p>
           <p>Long: {locationInfo.coord.lon}</p>
     </div> 
-    <div className="">
       {date}
-    </div>
     </div>
     </>
   )

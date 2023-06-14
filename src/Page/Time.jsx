@@ -7,43 +7,51 @@ function Time({item}) {
   const [selectedTimeIndex, setSelectedTimeIndex] = useState(0)
  
   const handleArrowUpIcon = () => {
-    if (selectedTimeIndex < item.length - 1) {
-        setSelectedTimeIndex(selectedTimeIndex + 1);
-    }
-    else {
-      setSelectedTimeIndex(0);
-    }
+
+    if (selectedTimeIndex > 0) {
+      setSelectedTimeIndex(selectedTimeIndex - 1);
+  }
+  else {
+    setSelectedTimeIndex(item.length - 1);
+  }
 
   }
 
   const handleArrowDownIcon = () => {
-    if (selectedTimeIndex > 0) {
-        setSelectedTimeIndex(selectedTimeIndex - 1);
-    }
-    else {
-      setSelectedTimeIndex(item.length - 1);
-    }
+    if (selectedTimeIndex < item.length - 1) {
+      setSelectedTimeIndex(selectedTimeIndex + 1);
+  }
+  else {
+    setSelectedTimeIndex(0);
+  }
   }
   
-  const time = (
-    <>
-      <h1>{item[selectedTimeIndex].stamp}</h1>
-      <p>Temperature : {item[selectedTimeIndex].time.temp}</p>
-      <p>Feels Like : {item[selectedTimeIndex].time.feels_like}</p>
-      <p>Humidity : {item[selectedTimeIndex].time.humidity}</p>
-    </>
-  )
-
   return (
-    <div className='border-2 '>
+    <div className='border-2 w-fit p-5 mx-auto'>
       <button onClick={handleArrowUpIcon}>
         <KeyboardArrowUpIcon/>
       </button>
-        {time}
+        <TimeStamp
+            stamp = {item[selectedTimeIndex].stamp}
+            weatherData = {item[selectedTimeIndex].time}
+        />
       <button onClick={handleArrowDownIcon}>
         <KeyboardArrowDownIcon/>
       </button>
     </div>
+  )
+}
+
+
+const TimeStamp = ({stamp, weatherData}) => {
+ 
+  return (
+    <>
+        <h1>{stamp}</h1>
+      <p>Temperature : {weatherData.temp}</p>
+      <p>Feels Like : {weatherData.feels_like}</p>
+      <p>Humidity : {weatherData.humidity}</p>
+    </>
   )
 }
 
