@@ -3,6 +3,16 @@ import axios from 'axios';
 import serviceWorker from './services/service';
 import Page from './Page/Page';
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import  CssBaseline  from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+})
+
+
 function App() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
@@ -68,6 +78,8 @@ function App() {
     }
   return (
     <>
+    <ThemeProvider theme = {darkTheme}>
+      <CssBaseline/>
      {(!loading)?
      <Page
         days = {days}
@@ -78,6 +90,7 @@ function App() {
         loading = {loading}
      />:false}
      <button onClick={getDateTimeStamps}>Press</button>
+     </ThemeProvider>
      </>
   )
 }

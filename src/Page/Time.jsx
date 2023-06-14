@@ -35,7 +35,7 @@ function Time({item}) {
   )
 
   return (
-    <div className='border-2'>
+    <div className='border-2 '>
       <button onClick={handleArrowUpIcon}>
         <KeyboardArrowUpIcon/>
       </button>
