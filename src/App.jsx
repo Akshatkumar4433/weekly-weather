@@ -5,12 +5,15 @@ import Page from './Page/Page';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import  CssBaseline  from '@mui/material/CssBaseline';
+import Error from './Alerts/Error';
+import Success from './Alerts/Success';
 
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
 })
+
 
 
 function App() {
@@ -24,6 +27,8 @@ function App() {
   const [weatherApiError, setWeatherApiError] = useState(null);
   
   const [loading, setLoading] = useState(true);
+
+  const [successMessage, setSuccessMessage] = useState('Go Ahead Press the Button to see the magic')
    
   const getDateTimeStamps = async () => {
        await getGeolocation();
@@ -47,6 +52,9 @@ function App() {
       setDayWithTimeStamps(serviceWorker.sortTimeByDate(response.data.list));
       setDays(serviceWorker.getDays(response.data.list));
       setLoading(false);
+      setWeatherApiError(false);
+      setlongLatError(false);
+      setSuccessMessage('Here is the weather data for next 5 days based on your location');
       }
     
     catch (error) {
@@ -80,13 +88,12 @@ function App() {
     <>
     <ThemeProvider theme = {darkTheme}>
       <CssBaseline/>
+    {(weatherApiError)?<Error message = {weatherApiError.message}/>:(longLatError)?<Error message = {longLatError.message}/>:<Success message = {successMessage}/>}
      {(!loading)?
      <Page
         days = {days}
         locationInfo = {locationInfo}
         dayWithTimeStamps = {dayWithTimeStamps}
-        weatherApiError = {weatherApiError}
-        longLatError = {longLatError}
         loading = {loading}
      />:false}
      <div className='text-center'>

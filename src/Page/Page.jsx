@@ -4,8 +4,6 @@ import { useState } from "react";
 
 function Page({ locationInfo,
                 dayWithTimeStamps,
-                weatherApiError,
-                longLatError,
                 days
             }) {
   
