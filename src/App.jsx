@@ -84,11 +84,12 @@ function App() {
         setlongLatError('No Geolocation Support')
       }
     }
+
   return (
     <>
     <ThemeProvider theme = {darkTheme}>
       <CssBaseline/>
-    {(weatherApiError)?<Error message = {weatherApiError.message}/>:(longLatError)?<Error message = {longLatError.message}/>:<Success message = {successMessage}/>}
+    {(longLatError)?<Error message = {longLatError.message}/>:(weatherApiError)?<Error message = {weatherApiError.message}/>:<Success message = {successMessage}/>}
      {(!loading)?
      <Page
         days = {days}
